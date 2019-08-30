@@ -6,32 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <div id="songName">
-        <h2></h2>
-    </div>
-    <div class="gamePanel">
-        <h5 id="userHelp">Press any key to get started</h5>
-        <div id="panelElements">
-            <h5>Wins</h5>
-            <h5 id="winsCount"></h5>
-            <h5>Current Word</h5>
-            <h5 id="currentWord"></h5>
-            <h5>Number of guesses remaining</h5>
-            <h5 id=numOfGuesses>13</h5>
-            <h5>Letters already guessed</h5>
-            <h5 id="guessedLetters"></h5>
+    <audio id="mj" src="./assets/javascript/mj.mp3" muted='muted'></audio>
+    <audio id="aerosmith" src="./assets/javascript/aerosmith.mp3" muted='muted'></audio>
+    <audio id="madonna" src="./assets/javascript/madonna.mp3" muted='muted'></audio>
+    <audio id="queen" src="./assets/javascript/queen.mp3" muted='muted'></audio>
+    <header>
+        <img src="./assets/images/80sstyle.png">
+    </header>
+
+    <div class="container">
+        <div class="songNameAndImg">
+            <img class="songImg" src="./assets/images/80img.jpg">
+
+            <div id="songName">
+                <h2>If you correctly guess the name of the artist, his, her or their song will be played</h2>
+            </div>
         </div>
-        <div id="gameOver"></div>
+
+        <div class="gamePanel">
+            <h5 id="userHelp">Press any key to get started</h5>
+            <div id="panelElements">
+                <h5>Wins</h5>
+                <h5 id="winsCount"></h5>
+                <h5>Current Word</h5>
+                <h5 id="currentWord"></h5>
+                <h5>Number of guesses remaining</h5>
+                <h5 id=numOfGuesses>13</h5>
+                <h5>Letters already guessed</h5>
+                <h5 id="guessedLetters"></h5>
+            </div>
+            <div id="gameOver"></div>
+        </div>
     </div>
-
-
-
-
-
+ 
     <script src="./assets/javascript/game.js"></script>
 </body>
 

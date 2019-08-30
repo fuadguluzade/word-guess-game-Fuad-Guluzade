@@ -1,10 +1,20 @@
 var winCount = 0;
 var curWord = ["Michael Jackson", "Madonna", "Queen", "Aerosmith"]; //
-var songsArray = ["Billy Jean", "Crazy for you", "I want to break free", "Rag Doll"]
+var songsNameArray = ["Billy Jean", "Crazy for you", "I want to break free", "Rag Doll"];
 var curWordIndex = 0;
 var remGuess = 13;
 var guessedArray = [];
 var underscores = [];
+
+var mj = document.getElementById("mj");
+mj.muted = false;
+var aerosmith = document.getElementById("aerosmith");
+aerosmith.muted = false;
+var queen = document.getElementById("queen");
+queen.muted = false;
+var madonna = document.getElementById("madonna");
+madonna.muted = false;
+var songsArray = [mj, madonna, queen, aerosmith];
 
 function showHidden() {
     for (var i = 0; i < curWord[curWordIndex].length; i++) {
@@ -56,8 +66,12 @@ function beginGame() {
             winCount++;
             document.getElementById("winsCount").style.display = 'inherit';
             document.getElementById("winsCount").innerHTML = winCount;
-            document.getElementById("songName").style.display = 'inherit';
-            document.getElementById("songName").innerHTML = songsArray[curWordIndex] + ' by ' + curWord[curWordIndex];
+            document.getElementById("songName").innerHTML = songsNameArray[curWordIndex] + ' by ' + curWord[curWordIndex];
+            if (curWordIndex > 0) {
+                var v = curWordIndex;
+                stopAudio(songsArray[--v]);
+            }
+            songsArray[curWordIndex].play();
             curWordIndex++;
             if (curWordIndex < curWord.length) {
                 changeQuestion();
@@ -96,16 +110,23 @@ function endGame() {
 
 function restartGame() {
     document.getElementById("userHelp").textContent = 'Press any key to begin';
+    stopAudio(songsArray[--curWordIndex]);
     showGamePanel();
     beginGame();
+}
+
+function stopAudio(song) {
+    song.pause();
+    song.currentTime = 0;
 }
 
 function showGamePanel() {
     document.getElementById("gameOver").style.display = 'none';
     document.getElementById("panelElements").style.display = 'inherit';
+    document.getElementById("songName").innerHTML = "If you correctly guess the name of the artist, his, her or their song will be played";
     curWordIndex = 0;
     winCount = 0;
-    document.getElementById("winsCount").innerHTML = winCount;
+    document.getElementById("winsCount").style.display = 'none';
     underscores = [];
     document.getElementById("currentWord").innerHTML = "";
     remGuess = 13;
