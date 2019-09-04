@@ -1,5 +1,6 @@
 var winCount = 0;
-var curWord = ["Michael Jackson", "Madonna", "Queen", "Aerosmith"]; //
+var curWord = ["Michael Jackson", "Madonna", "Queen", "Aerosmith"]; 
+var imagesArray = [];
 var songsNameArray = ["Billy Jean", "Crazy for you", "I want to break free", "Rag Doll"];
 var curWordIndex = 0;
 var remGuess = 13;
@@ -14,7 +15,14 @@ var queen = document.getElementById("queen");
 queen.muted = false;
 var madonna = document.getElementById("madonna");
 madonna.muted = false;
+
 var songsArray = [mj, madonna, queen, aerosmith];
+
+
+imagesArray[0] = "../word-guess-game-Fuad-Guluzade/assets/images/mj.jpg";
+imagesArray[1] = "../word-guess-game-Fuad-Guluzade/assets/images/madonna.jpg";
+imagesArray[2] = "../word-guess-game-Fuad-Guluzade/assets/images/queen.jpg";
+imagesArray[3] = "../word-guess-game-Fuad-Guluzade/assets/images/aerosmith.jpg";
 
 function showHidden() {
     for (var i = 0; i < curWord[curWordIndex].length; i++) {
@@ -66,6 +74,7 @@ function beginGame() {
             winCount++;
             document.getElementById("winsCount").style.display = 'inherit';
             document.getElementById("winsCount").innerHTML = winCount;
+            document.querySelector('.songImg').src = imagesArray[curWordIndex];
             document.getElementById("songName").innerHTML = songsNameArray[curWordIndex] + ' by ' + curWord[curWordIndex];
             if (curWordIndex > 0) {
                 var v = curWordIndex;
@@ -123,12 +132,13 @@ function stopAudio(song) {
 function showGamePanel() {
     document.getElementById("gameOver").style.display = 'none';
     document.getElementById("panelElements").style.display = 'inherit';
+    document.getElementById("songImg").src = ""
     document.getElementById("songName").innerHTML = "If you correctly guess the name of the artist, his, her or their song will be played";
     curWordIndex = 0;
     winCount = 0;
     document.getElementById("winsCount").style.display = 'none';
     underscores = [];
-    document.getElementById("currentWord").innerHTML = "";
+    document.getElementById("currentWord").innerHTML = "../word-guess-game-Fuad-Guluzade/assets/images/80img.jpg";
     remGuess = 13;
     document.getElementById("numOfGuesses").innerHTML = 13;
     guessedArray = [];
@@ -136,6 +146,5 @@ function showGamePanel() {
 }
 
 beginGame();
-
 
 
